@@ -638,56 +638,40 @@ export default function Site() {
               <p className="body-copy max-w-lg">{t.storeIntro}</p>
             </div>
 
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {(
-                [
-                  {
-                    type: "tub" as const,
-                    name: t.whey,
-                    description: t.wheyDesc,
-                    flavors: t.flavors,
-                    eyebrow: "PERFORMANCE FUEL",
-                  },
-                  {
-                    type: "bar" as const,
-                    name: t.bar,
-                    description: t.barDesc,
-                    flavors: t.assorted,
-                    eyebrow: "ON-THE-GO ENERGY",
-                  },
-                ] as const
-              ).map((product) => (
-                <article key={product.type} className="product-card reveal">
-                  {/* 3-D canvas area */}
-                  <div className="product-visual">
-                    <ProductScene type={product.type} />
-                  </div>
+            <div className="mt-10 max-w-3xl mx-auto">
+              <article className="product-card reveal grid md:grid-cols-2">
+                {/* 3-D canvas — left side */}
+                <div className="product-visual md:h-[420px]">
+                  <ProductScene />
+                </div>
 
-                  {/* Product info */}
-                  <div className="product-info">
-                    <div className="eyebrow">{product.eyebrow}</div>
-                    <h3>{product.name}</h3>
-                    <p>{product.description}</p>
-                    <div className="product-meta">
-                      <span>{product.flavors}</span>
-                      <strong>{t.from}</strong>
-                    </div>
-                    <a
-                      className="btn min-h-10"
-                      href={waLink(
-                        `Hi Iron 9 Gym, I'd like to order ${product.name}`,
-                      )}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <MessageCircle size={14} />
-                      {t.order}
-                    </a>
+                {/* Product info — right side */}
+                <div className="product-info flex flex-col justify-center">
+                  <div className="eyebrow">PERFORMANCE FUEL</div>
+                  <h3>{t.whey}</h3>
+                  <p>{t.wheyDesc}</p>
+                  <div className="product-meta">
+                    <span>{t.flavors}</span>
+                    <strong>{t.from}</strong>
                   </div>
-                </article>
-              ))}
+                  <a
+                    className="btn min-h-10"
+                    href={waLink(
+                      lang === "ar"
+                        ? "مرحباً آيرون 9 جيم، أريد طلب واي بروتين."
+                        : "Hi Iron 9 Gym, I'd like to order Whey Protein.",
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MessageCircle size={14} />
+                    {t.order}
+                  </a>
+                </div>
+              </article>
             </div>
             <p className="mt-4 text-xs text-white/45">{t.drag}</p>
+
           </div>
         </section>
 

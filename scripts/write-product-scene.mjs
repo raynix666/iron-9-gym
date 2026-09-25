@@ -1,4 +1,6 @@
-"use client";
+import { writeFileSync } from 'fs';
+
+const code = `"use client";
 
 /**
  * ProductScene.tsx — IRON 9 GYM
@@ -266,3 +268,7 @@ export default function ProductScene() {
     </div>
   );
 }
+`;
+
+writeFileSync('components/ProductScene.tsx', code, 'utf8');
+console.log('ProductScene.tsx written successfully — ' + code.length + ' chars');

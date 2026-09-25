@@ -104,16 +104,18 @@ const copy = {
     storeEyebrow: "Fuel your training",
     storeTitle: "Supplements store.",
     storeIntro:
-      "Explore the lineup. Product availability and prices are placeholders — message us to confirm current stock.",
-    whey: "Whey Protein",
-    wheyDesc: "Ask us about current sizes, flavors and availability.",
+      "Official nutrition available on the gym floor. Featuring Optimum Nutrition Gold Standard 100% Whey — the world's most trusted protein. Contact us on WhatsApp for current stock & pricing.",
+    whey: "Optimum Nutrition Gold Standard 100% Whey",
+    wheyDesc:
+      "The world's #1 best-selling whey protein. Packed with 24g of premium whey protein isolate and 5.5g of BCAAs per scoop to accelerate muscle recovery and lean gains.",
+    wheyEyebrow: "WORLD'S #1 WHEY PROTEIN",
     bar: "Grenade Protein Bar",
     barDesc: "Message us to check the current selection.",
-    flavors: "Flavors: chocolate · vanilla · strawberry*",
+    flavors: "Flavors: Double Rich Chocolate · Vanilla Ice Cream · Extreme Milk Chocolate*",
     assorted: "Flavors: assorted selection*",
     from: "From — JOD*",
     order: "Order on WhatsApp",
-    drag: "Drag the products to rotate. Prices and flavors are placeholders.",
+    drag: "Drag the 3D tub to rotate and inspect. Prices and flavors are placeholders.",
 
     memberEyebrow: "Choose your commitment",
     memberTitle: "Earn every rep.",
@@ -205,16 +207,18 @@ const copy = {
     storeEyebrow: "غذِّ تمرينك",
     storeTitle: "متجر المكملات.",
     storeIntro:
-      "الأسعار والتوفر تجريبية — تواصل معنا لتأكيد المنتجات المتوفرة.",
-    whey: "واي بروتين",
-    wheyDesc: "تواصل معنا لمعرفة الأحجام والنكهات والتوفر.",
+      "المكملات الأصلية المعتمدة في النادي. نوفر أوبتيموم نيوترشن جولد ستاندرد 100% واي — البروتين الأكثر شهرة وتقييماً عالمياً. راسلنا على واتساب لتأكيد النكهات والأسعار.",
+    whey: "أوبتيموم نيوترشن جولد ستاندرد 100% واي",
+    wheyDesc:
+      "البروتين رقم 1 عالمياً والأكثر مبيعاً. يحتوي على 24 غرام من بروتين مصل اللبن المعزول (Whey Isolate) و 5.5 غرام BCAA في كل حصة للاستشفاء وبناء العضلات.",
+    wheyEyebrow: "البروتين رقم 1 عالمياً",
     bar: "جرينيد بروتين بار",
     barDesc: "راسلنا لمعرفة النكهات المتوفرة.",
-    flavors: "النكهات: شوكولاتة · فانيلا · فراولة*",
+    flavors: "النكهات: دبل ريتش شوكليت · فانيلا آيس كريم · إكستريم ميلك شوكليت*",
     assorted: "النكهات: تشكيلة متنوعة*",
     from: "يبدأ من — دينار*",
     order: "اطلب عبر واتساب",
-    drag: "اسحب المنتجات لتدويرها. الأسعار والنكهات تجريبية.",
+    drag: "اسحب علبة البروتين ثلاثية الأبعاد لتدويرها وفحصها. الأسعار والنكهات تجريبية.",
 
     memberEyebrow: "اختر التزامك",
     memberTitle: "كل تكرار يصنع فرقاً.",
@@ -647,7 +651,7 @@ export default function Site() {
 
                 {/* Product info — right side */}
                 <div className="product-info flex flex-col justify-center">
-                  <div className="eyebrow">PERFORMANCE FUEL</div>
+                  <div className="eyebrow">{t.wheyEyebrow}</div>
                   <h3>{t.whey}</h3>
                   <p>{t.wheyDesc}</p>
                   <div className="product-meta">
@@ -658,8 +662,8 @@ export default function Site() {
                     className="btn min-h-10"
                     href={waLink(
                       lang === "ar"
-                        ? "مرحباً آيرون 9 جيم، أريد طلب واي بروتين."
-                        : "Hi Iron 9 Gym, I'd like to order Whey Protein.",
+                        ? "مرحباً آيرون 9 جيم، أود الاستفسار وطلب أوبتيموم نيوترشن جولد ستاندرد 100% واي."
+                        : "Hi Iron 9 Gym, I'd like to order Optimum Nutrition Gold Standard 100% Whey.",
                     )}
                     target="_blank"
                     rel="noreferrer"

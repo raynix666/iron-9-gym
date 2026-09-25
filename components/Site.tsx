@@ -27,7 +27,6 @@
  * ────────────────────────────────────────────────────────────────────
  */
 
-import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
@@ -51,16 +50,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
-
-/* ── Lazy-load the 3-D canvas (client-only, heavy bundle) ───────────── */
-const ProductScene = dynamic(() => import("./ProductScene"), {
-  ssr: false,
-  loading: () => (
-    <div className="product-fallback">
-      <div className="fallback-pack">IRON 9</div>
-    </div>
-  ),
-});
 
 /* ── Constants ──────────────────────────────────────────────────────── */
 // ✏️  Edit this to change the WhatsApp number used throughout the site
@@ -115,7 +104,7 @@ const copy = {
     assorted: "Flavors: assorted selection*",
     from: "From — JOD*",
     order: "Order on WhatsApp",
-    drag: "Drag the 3D tub to rotate and inspect. Prices and flavors are placeholders.",
+    note: "Official supplements in stock at the gym floor. Prices and flavors are placeholders — contact us to confirm.",
 
     memberEyebrow: "Choose your commitment",
     memberTitle: "Earn every rep.",
@@ -218,7 +207,7 @@ const copy = {
     assorted: "النكهات: تشكيلة متنوعة*",
     from: "يبدأ من — دينار*",
     order: "اطلب عبر واتساب",
-    drag: "اسحب علبة البروتين ثلاثية الأبعاد لتدويرها وفحصها. الأسعار والنكهات تجريبية.",
+    note: "مكملات أصلية متوفرة في النادي. الأسعار والنكهات تجريبية — تواصل معنا للتأكيد.",
 
     memberEyebrow: "اختر التزامك",
     memberTitle: "كل تكرار يصنع فرقاً.",
@@ -642,24 +631,48 @@ export default function Site() {
               <p className="body-copy max-w-lg">{t.storeIntro}</p>
             </div>
 
-            <div className="mt-10 max-w-3xl mx-auto">
-              <article className="product-card reveal grid md:grid-cols-2">
-                {/* 3-D canvas — left side */}
-                <div className="product-visual md:h-[420px]">
-                  <ProductScene />
+            <div className="mt-10 max-w-4xl mx-auto">
+              <article className="product-card reveal grid md:grid-cols-2 gap-6 items-center">
+                {/* Product photo showcase — left side */}
+                <div className="relative overflow-hidden rounded-xl bg-gradient-to-b from-[#18191e] to-[#0c0d0f] min-h-[380px] md:min-h-[460px] flex items-center justify-center p-3 group">
+                  <img
+                    src="/assets/whey-protein.jpg"
+                    alt="Optimum Nutrition Gold Standard 100% Whey Protein"
+                    className="h-full w-full object-cover rounded-lg shadow-2xl transition duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute top-4 left-4 rounded-full bg-iron-red/90 px-3 py-1 text-[0.65rem] font-black uppercase tracking-widest text-white shadow-lg backdrop-blur-md">
+                    100% ORIGINAL
+                  </span>
                 </div>
 
                 {/* Product info — right side */}
                 <div className="product-info flex flex-col justify-center">
                   <div className="eyebrow">{t.wheyEyebrow}</div>
-                  <h3>{t.whey}</h3>
-                  <p>{t.wheyDesc}</p>
-                  <div className="product-meta">
+                  <h3 className="text-2xl font-bold">{t.whey}</h3>
+                  <p className="mt-2 text-white/70">{t.wheyDesc}</p>
+
+                  {/* Nutrient Highlights */}
+                  <div className="mt-4 grid grid-cols-3 gap-2 border-y border-white/10 py-3 text-center">
+                    <div>
+                      <strong className="block text-lg font-black text-white">24g</strong>
+                      <span className="text-[0.68rem] uppercase tracking-wider text-white/50">Protein</span>
+                    </div>
+                    <div>
+                      <strong className="block text-lg font-black text-white">5.5g</strong>
+                      <span className="text-[0.68rem] uppercase tracking-wider text-white/50">BCAAs</span>
+                    </div>
+                    <div>
+                      <strong className="block text-lg font-black text-white">4g</strong>
+                      <span className="text-[0.68rem] uppercase tracking-wider text-white/50">Glutamine</span>
+                    </div>
+                  </div>
+
+                  <div className="product-meta mt-3">
                     <span>{t.flavors}</span>
                     <strong>{t.from}</strong>
                   </div>
                   <a
-                    className="btn min-h-10"
+                    className="btn min-h-10 mt-4"
                     href={waLink(
                       lang === "ar"
                         ? "مرحباً آيرون 9 جيم، أود الاستفسار وطلب أوبتيموم نيوترشن جولد ستاندرد 100% واي."
@@ -674,7 +687,7 @@ export default function Site() {
                 </div>
               </article>
             </div>
-            <p className="mt-4 text-xs text-white/45">{t.drag}</p>
+            <p className="mt-4 text-xs text-white/45">{t.note}</p>
 
           </div>
         </section>
